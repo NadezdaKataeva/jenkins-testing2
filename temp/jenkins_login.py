@@ -13,7 +13,7 @@ from time import sleep
 # test data
 BASE_URL = 'http://localhost:8080'
 username = 'user'
-password = '12345678'
+password = '12331231312'
 
 # initialize driver
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -26,6 +26,8 @@ driver.find_element(By.NAME, 'j_password').send_keys(password)
 driver.find_element(By.NAME, 'Submit').click()
 
 assert wait.until(EC.presence_of_element_located((By.TAG_NAME, 'h1'))).text == 'Welcome to Jenkins!'
+
+
 
 sleep(10)
 sleep(5)
