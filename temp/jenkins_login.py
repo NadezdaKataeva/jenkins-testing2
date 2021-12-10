@@ -27,9 +27,4 @@ driver.find_element(By.NAME, 'Submit').click()
 
 assert wait.until(EC.presence_of_element_located((By.TAG_NAME, 'h1'))).text == 'Welcome to Jenkins!'
 
-sleep(555)
-sleep(555)
-sleep(555)
-sleep(5)
-sleep(5)
 sleep(5)
