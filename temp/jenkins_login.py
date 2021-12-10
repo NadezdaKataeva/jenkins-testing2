@@ -29,3 +29,5 @@ assert wait.until(EC.presence_of_element_located((By.TAG_NAME, 'h1'))).text == '
 
 sleep(5)
 sleep(5)
+sleep(5)
+sleep(5)
