@@ -27,4 +27,13 @@ driver.find_element(By.NAME, 'Submit').click()
 
 assert wait.until(EC.presence_of_element_located((By.TAG_NAME, 'h1'))).text == 'Welcome to Jenkins!'
 
+driver.find_element(By.XPATH, '//*[@id="tasks"]/div[1]/span/a').click()
+###assert wait.until(EC.presence_of_element_located((By.TAG_NAME, 'h3'))).text == 'Enter an item name!'
+
+driver.find_element(By.XPATH, '//*[@id="name"]').send_keys('aaa')
+sleep(5)
+driver.find_element(By.XPATH, '//*[@id="j-add-item-type-standalone-projects"]/ul/li[1]/label/span').click()
+driver.find_element(By.XPATH, '//*[@id="ok-button"]').click()
+
+
 sleep(5)
