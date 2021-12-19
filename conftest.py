@@ -30,16 +30,17 @@ def init_remote_driver_chrome():
         driver = webdriver.Remote(command_executor=REMOTE_URL,
                                   desired_capabilities=desired_capabilities)
     else:
-        options = webdriver.ChromeOptions()
-        options.add_argument("--window-size=1600,1080")
-        options.headless = True
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--window-size=1600,1080")
+        chromeOptions.headless = True
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
 
     return driver
 
 
 @pytest.fixture(params=['chrome'], scope='class', autouse=True)
 def init_driver(request):
+    driver = None
     driver = init_remote_driver_chrome()
 
     driver.get(TD.BASE_URL)
