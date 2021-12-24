@@ -3,6 +3,7 @@ import requests
 from requests.exceptions import ConnectionError
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from config.test_data import TestData as TD
 from selenium.webdriver.common.by import By
@@ -13,29 +14,23 @@ from selenium.webdriver.support import expected_conditions as EC
 REMOTE_URL = 'http://127.0.0.1:4444/wd/hub'
 
 
-def is_grid_up():
-    try:
-        response = requests.get(REMOTE_URL)
-    except ConnectionError:
-        print('Grid is DOWN!')
-        return False
-
-    print('Grid is UP!')
-    return response.status_code == 200
-
-
 def init_remote_driver_chrome():
-    if is_grid_up():
-        desired_capabilities = DesiredCapabilities.CHROME.copy()
-        driver = webdriver.Remote(command_executor=REMOTE_URL,
-                                  desired_capabilities=desired_capabilities)
-    else:
-        chromeOptions = webdriver.ChromeOptions()
-        chromeOptions.add_argument("--window-size=1600,1080")
-        chromeOptions.headless = True
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
+    try:
+        if requests.get(REMOTE_URL).status_code == 200:
+            print('Grid is UP')
 
-    return driver
+            return webdriver.Remote(command_executor=REMOTE_URL,
+                                    desired_capabilities=DesiredCapabilities.CHROME.copy())
+    except ConnectionError:
+        pass
+
+    print('Grid is DOWN')
+    chromeOptions = webdriver.ChromeOptions()
+    chromeOptions.add_argument("--window-size=1600,1080")
+    chromeOptions.headless = True
+
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()),
+                            options=chromeOptions)
 
 
 @pytest.fixture(params=['chrome'], scope='class', autouse=True)
