@@ -7,6 +7,7 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
+        self.url = None
         self.wait = None
         self.sort_wait = None
 
@@ -22,15 +23,15 @@ class BasePage:
         self.wait = WebDriverWait(self.driver, 4)
         return self.wait
 
+    def go_to_page(self):
+        self.driver.get(self.url)
+        return self
+
     def get_title(self):
         return self.driver.title
 
     def get_current_url(self):
         return self.driver.current_url
-
-    def go_to_page(self, url: str):
-        self.driver.get(url)
-        return self
 
     def is_visible(self, locator):
         try:
@@ -38,6 +39,16 @@ class BasePage:
             return True
         except TimeoutException:
             return False
+
+    def is_clickable(self, locator):
+        try:
+            self.get_wait().until(EC.element_to_be_clickable(locator))
+            return True
+        except TimeoutException:
+            return False
+
+    def click(self, locator):
+        self.get_wait().until(EC.element_to_be_clickable(locator)).click()
 
     def get_text(self, locator):
         element = self.get_wait().until(EC.visibility_of_element_located(locator))
