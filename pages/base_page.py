@@ -8,11 +8,18 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = None
+        self.sort_wait = None
+
+    def get_short_wait(self):
+        if self.sort_wait:
+            return self.sort_wait
+        self.wait = WebDriverWait(self.driver, 1)
+        return self.wait
 
     def get_wait(self):
         if self.wait:
             return self.wait
-        self.wait = WebDriverWait(self.driver, 5)
+        self.wait = WebDriverWait(self.driver, 4)
         return self.wait
 
     def get_title(self):
@@ -33,4 +40,8 @@ class BasePage:
             return False
 
     def get_text(self, locator):
-        return self.get_wait().until(EC.visibility_of_element_located(locator)).text
+        element = self.get_wait().until(EC.visibility_of_element_located(locator))
+        if element.text:
+            return element.text
+        else:
+            return element.get_attribute('value')
