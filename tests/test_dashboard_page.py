@@ -1,8 +1,9 @@
 from pages.dashboard_page import *
 from pages.new_job import NewJob
+from tests.base_test import BaseTest
 
 
-class TestDashboardPage:
+class TestDashboardPage(BaseTest):
 
     def test_title(self):
         assert DashboardPage(self.driver).get_title() == DashboardPage.PAGE_TITLE
