@@ -6,6 +6,7 @@ from tests.base_test import BaseTest
 class TestDashboardPage(BaseTest):
 
     def test_title(self):
+        self.driver.implicitly_wait(10)
         assert DashboardPage(self.driver).get_title() == DashboardPage.PAGE_TITLE
 
     def test_redirection_to_new_job_page(self):
