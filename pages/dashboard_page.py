@@ -19,3 +19,6 @@ class DashboardPage(BasePage):
 
     def click_new_item(self):
         self.click((By.XPATH, '//a[@title="New Item"]'))
+
+    def click_build_history(self):
+        self.click((By.XPATH, '//a[@title="Build History"]'))
