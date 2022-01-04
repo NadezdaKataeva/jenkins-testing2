@@ -18,3 +18,4 @@ class JobFolder(BasePage):
         if self.is_visible(CONFIRM_DELETE):
             self.click(CONFIRM_DELETE)
 
+
