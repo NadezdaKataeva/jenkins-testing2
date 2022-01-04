@@ -17,7 +17,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: |
-          /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid
+          /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid
         key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
         restore-keys: |
             ${{ runner.os }}-jenkins_backup-
@@ -55,7 +55,7 @@ jobs:
 
     - name: Insatll Jenkins data
       run: |
-        docker run --rm --volumes-from jenkins2 -v /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid:/backup ubuntu bash -c "cd /var && tar xf /backup/jenkins_backup.tar --strip 1"
+        docker run --rm --volumes-from jenkins2 -v /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid:/backup ubuntu bash -c "cd /var && tar xf /backup/jenkins_backup.tar --strip 1"
         docker restart jenkins2
         sleep 120
 
