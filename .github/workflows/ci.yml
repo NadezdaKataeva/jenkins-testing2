@@ -17,10 +17,10 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-       path: |
-         /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid
-       key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
-       restore-keys: |
+        path: |
+          /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid
+        key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
+        restore-keys: |
             ${{ runner.os }}-jenkins_backup-
 
     - name: Set up Python 3.9
