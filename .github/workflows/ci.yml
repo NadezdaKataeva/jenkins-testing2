@@ -61,7 +61,6 @@ jobs:
         docker restart jenkins2
         sleep 120
 
-
     - name: Test with pytest
       run: |
         pytest -vs
