@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [master]
 
+
 jobs:
   cancel:
     name: 'Cancel Previous Runs'
