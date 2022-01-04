@@ -2,8 +2,7 @@ name: Cancel
 
 on:
   pull_request:
-    branches: [ master ]
-
+    branches: [master]
 
 jobs:
   cancel:
@@ -14,4 +13,4 @@ jobs:
       - uses: styfle/cancel-workflows-action@0.9.1
         with:
           workflow_id: ci.yml
-          access_token: ${{ secrets.GITHUB_TOKEN }}
+          access_token: ${{ github.token }}
