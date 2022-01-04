@@ -1,16 +1,14 @@
 # This workflows will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Jenkins Testing2
+name: Jenkins Testing
 
 on:
   pull_request:
-    branches: [ master ]
-
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +21,6 @@ jobs:
         key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
         restore-keys: |
             ${{ runner.os }}-jenkins_backup-
-
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -52,8 +49,8 @@ jobs:
 
     - name: Load Jenkins data
       run: |
-        if [ ! -f /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar ]; then
-          curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar
+        if [ ! -f /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid/jenkins_backup.tar ]; then
+          curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid/jenkins_backup.tar
         fi
 
     - name: Insatll Jenkins data
