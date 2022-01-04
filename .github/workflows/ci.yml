@@ -51,7 +51,7 @@ jobs:
     - name: Load Jenkins data
       run: |
        if [ ! -f /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar ]; then
-             curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar
+             curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar;
        fi
 
     - name: Insatll Jenkins data
