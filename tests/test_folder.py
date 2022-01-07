@@ -3,14 +3,20 @@ from pages.folder_config import FolderConfig
 from pages.job_folder import JobFolder
 from pages.new_job import NewJob
 from tests.base_test import BaseTest
+from utils import jenkins_libs as jl
 
 
 class TestFolder(BaseTest):
 
+    jen_libs = jl.JenkinsLibs.jenkins_server
+
     def test_create_folder_valid_name(self):
         folder_name = 'testfolder123'
 
-        DashboardPage(self.driver).click_new_item()
+        dp = DashboardPage(self.driver)
+        if dp.is_job_exist(folder_name):
+            self.jen_libs.delete_job(folder_name)
+        dp.click_new_item()
 
         new_job = NewJob(self.driver)
         new_job.enter_item_name(folder_name)
@@ -25,3 +31,5 @@ class TestFolder(BaseTest):
         job_folder = JobFolder(self.driver)
         assert job_folder.get_current_url().endswith(f'/job/{folder_name}/')
         assert job_folder.get_page_title() == folder_name
+
+        #self.jen_libs.delete_job(folder_name)
