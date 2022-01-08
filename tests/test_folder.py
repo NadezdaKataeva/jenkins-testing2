@@ -1,3 +1,5 @@
+import pytest
+
 from pages.dashboard_page import DashboardPage
 from pages.folder_config import FolderConfig
 from pages.job_folder import JobFolder
@@ -6,7 +8,7 @@ from tests.base_test import BaseTest
 
 
 class TestFolder(BaseTest):
-
+    @pytest.mark.skip
     def test_create_folder_valid_name(self):
         folder_name = 'testfolder123'
 
