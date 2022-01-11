@@ -7,4 +7,5 @@ from selenium.webdriver.support import expected_conditions as EC
 class FolderConfig(BasePage):
 
     def click_save(self):
-        self.click((By.ID, "yui-gen6-button"))
+        self.click((By.XPATH, '//button[text()="Save"]'))
+        # self.click((By.ID, "yui-gen6-button"))
