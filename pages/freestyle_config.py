@@ -7,4 +7,4 @@ from selenium.webdriver.support import expected_conditions as EC
 class FreestyleConfig(BasePage):
 
     def click_save(self):
-        self.click((By.xpath, "//*[@type='submit']"))
+        self.click((By.XPATH, "//*[@type='submit']"))

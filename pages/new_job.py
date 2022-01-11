@@ -26,4 +26,4 @@ class NewJob(BasePage):
         self.click(OK_BUTTON)
 
     def click_freestyle(self):
-        self.click(By.XPATH, "//span[text()='Freestyle project']")
+        self.click((By.XPATH, "//span[text()='Freestyle project']"))

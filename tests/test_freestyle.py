@@ -6,7 +6,7 @@ from pages.new_job import NewJob
 from tests.base_test import BaseTest
 
 class TestFreestyle(BaseTest):
-    def  test_create_folder_valid_name(self):
+    def  test_create_freestyle_valid_name(self):
         freestyle_name = 'freestyle111'
 
         DashboardPage(self.driver).click_new_item()
@@ -23,4 +23,4 @@ class TestFreestyle(BaseTest):
 
         job_freestyle = JobFreestyle(self.driver)
         assert job_freestyle.get_current_url().endswith(f'/job/{freestyle_name}/')
-        assert job_freestyle.get_page_title() == freestyle_name
+        assert freestyle_name in job_freestyle.get_page_title()
