@@ -1,6 +1,7 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from config.test_data import TestData as TD
 
 
 class BasePage:
@@ -56,3 +57,7 @@ class BasePage:
             return element.text
         else:
             return element.get_attribute('value')
+
+    def get_project_url(self, name):
+        return str(TD.DASHBOARD_URL + name)
+
