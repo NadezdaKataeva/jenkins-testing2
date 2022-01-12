@@ -12,7 +12,6 @@ from tests.base_test import BaseTest
 
 
 class TestFolder(BaseTest):
-
     folder_name = 'testfolder150'
 
     def test_create_folder_valid_name(self):
