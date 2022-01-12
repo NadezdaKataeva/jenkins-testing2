@@ -12,7 +12,7 @@ from tests.base_test import BaseTest
 
 
 class TestFolder(BaseTest):
-    folder_name = 'testfolder180'
+    folder_name = 'testfolder1180'
 
     def test_create_folder_valid_name(self):
         DashboardPage(self.driver).click_new_item()
