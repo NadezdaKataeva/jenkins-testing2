@@ -12,7 +12,7 @@ from tests.base_test import BaseTest
 
 
 class TestFolder(BaseTest):
-    folder_name = 'testfolder150'
+    folder_name = 'testfolder180'
 
     def test_create_folder_valid_name(self):
         DashboardPage(self.driver).click_new_item()
@@ -29,12 +29,13 @@ class TestFolder(BaseTest):
         job_folder = JobFolder(self.driver, self.folder_name)
         assert job_folder.get_current_url().endswith(f'/job/{self.folder_name}/')
         assert job_folder.get_page_title() == self.folder_name
-
+    @pytest.mark.skip
     def test_delete_created_folder(self):
         job_folder = JobFolder(self.driver, self.folder_name)
         job_folder.click_delete_folder()
         assert job_folder.get_current_url() == DashboardPage.DASHBOARD_URL
 
         dashboard = DashboardPage(self.driver)
-        table_jobs = dashboard.get_text(DashboardPage.DASHBOARD_TABLE)
+        table_jobs = dashboard.get_jobs_names_from_table()
+
         assert self.folder_name not in table_jobs
