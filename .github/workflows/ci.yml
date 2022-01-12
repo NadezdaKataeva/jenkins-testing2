@@ -1,17 +1,14 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# This workflows will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
 name: Jenkins Testing
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +16,10 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-       path: |
-         /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid
-       key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
-       restore-keys: |
+        path: |
+          /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid
+        key: ${{ runner.os }}-jenkins_backup-${{ hashFiles('**/jenkins_backup.tar') }}
+        restore-keys: |
             ${{ runner.os }}-jenkins_backup-
 
     - name: Set up Python 3.9
@@ -42,7 +39,6 @@ jobs:
       id: ip
       uses: haythem/public-ip@v1.2
 
-
     - name: Docker start
       run: docker-compose -f ./selenium-grid/docker-compose.yml up -d
       env:
@@ -53,16 +49,15 @@ jobs:
 
     - name: Load Jenkins data
       run: |
-       if [ ! -f /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar ]; then
-             curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid/jenkins_backup.tar
-       fi
+        if [ ! -f /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid/jenkins_backup.tar ]; then
+          curl http://buildemojis.com/jenkins_backup.tar -o /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid/jenkins_backup.tar
+        fi
 
     - name: Insatll Jenkins data
       run: |
-        docker run --rm --volumes-from jenkins2 -v /home/runner/work/jenkins-testing/jenkins-testing/selenium-grid:/backup ubuntu bash -c "cd /var && tar xf /backup/jenkins_backup.tar --strip 1"
+        docker run --rm --volumes-from jenkins2 -v /home/runner/work/jenkins-testing2/jenkins-testing2/selenium-grid:/backup ubuntu bash -c "cd /var && tar xf /backup/jenkins_backup.tar --strip 1"
         docker restart jenkins2
         sleep 120
-
 
     - name: Test with pytest
       run: |

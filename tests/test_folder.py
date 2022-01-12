@@ -1,4 +1,8 @@
+
 from selenium.webdriver.common.by import By
+
+import pytest
+
 
 from pages.dashboard_page import DashboardPage
 from pages.folder_config import FolderConfig
@@ -8,6 +12,7 @@ from tests.base_test import BaseTest
 
 
 class TestFolder(BaseTest):
+
     folder_name = 'testfolder150'
 
     def test_create_folder_valid_name(self):
