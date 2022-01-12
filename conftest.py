@@ -1,5 +1,6 @@
 import pytest
 import requests
+
 from requests.exceptions import ConnectionError
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities

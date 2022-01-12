@@ -12,7 +12,6 @@ class TestFolder(BaseTest):
 
     def test_create_folder_valid_name(self):
         DashboardPage(self.driver).click_new_item()
-
         new_job = NewJob(self.driver)
         new_job.enter_item_name(self.folder_name)
         new_job.click_folder()
