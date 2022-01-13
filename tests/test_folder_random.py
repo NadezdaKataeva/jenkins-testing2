@@ -12,15 +12,11 @@ class TestFolder(BaseTest):
     jen_libs = jl.JenkinsLibs.jenkins_server
 
     def test_create_folder_valid_name(self):
-        # folder_name = 'testfolder123'
+
         seq = random.randint(100, 999)
         folder_name = 'folder' + str(seq)
 
-
         DashboardPage(self.driver).click_new_item()
-        # if dp.is_job_exist(folder_name):
-        #     self.jen_libs.delete_job(folder_name)
-        # dp.click_new_item()
 
         new_job = NewJob(self.driver)
         new_job.enter_item_name(folder_name)
