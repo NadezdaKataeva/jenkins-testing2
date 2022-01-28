@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from config.TestData import TestData as TD
+from config.test_data import TestData as TD
 from selenium.webdriver.common.by import By
 
 

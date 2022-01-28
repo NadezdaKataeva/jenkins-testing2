@@ -1,7 +1,7 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from config.TestData import TestData as TD
+from config.test_data import TestData as TD
 
 
 class BasePage:

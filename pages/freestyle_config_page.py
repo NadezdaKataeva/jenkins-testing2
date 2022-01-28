@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
-from config.TestData import TestData as TD
+from config.test_data import TestData as TD
 
 PREVIEW = (By.XPATH, "//a[text() = 'Preview']")
 HIDEPREVIEW = (By.XPATH, "//a[text() = 'Hide preview']")
