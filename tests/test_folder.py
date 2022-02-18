@@ -37,7 +37,7 @@ class TestFolder(BaseTest):
         assert folder_config.get_current_url().endswith(f'/job/{self.folder_name}/configure')
         folder_config.click_save()
 
-        job_folder = JobFolder(self.driver)
+        job_folder = JobFolder(self.driver, self.folder_name)
         assert job_folder.get_current_url().endswith(f'/job/{folder_name}/')
         assert job_folder.get_page_title() == folder_name
 
