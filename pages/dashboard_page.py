@@ -19,7 +19,7 @@ class DashboardPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.url = TD.DASHBOARD_URL
+        self.go_to_page(self.DASHBOARD_URL)
 
     def click_new_item(self):
         self.click((By.XPATH, '//a[@title="New Item"]'))

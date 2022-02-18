@@ -24,8 +24,8 @@ class BasePage:
         self.wait = WebDriverWait(self.driver, 4)
         return self.wait
 
-    def go_to_page(self):
-        self.driver.get(self.url)
+    def go_to_page(self, url: str):
+        self.driver.get(url)
         return self
 
     def get_title(self):
