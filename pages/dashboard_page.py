@@ -25,6 +25,7 @@ class DashboardPage(BasePage):
         self.click((By.XPATH, '//a[@title="New Item"]'))
 
     def is_job_exist(self, job_name):
+
         return self.is_visible((By.XPATH, f"//a[text()='{job_name}']"))
 
 

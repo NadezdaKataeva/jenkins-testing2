@@ -5,6 +5,7 @@ from config.test_data import TestData as TD
 DELETE_FOLDER = By.XPATH, "//*[@title='Delete Folder']"
 CONFIRM_DELETE = By.NAME, "Submit"
 
+
 class JobFolder(BasePage):
     def __init__(self, driver, name):
         super().__init__(driver)
@@ -17,5 +18,3 @@ class JobFolder(BasePage):
         self.click(DELETE_FOLDER)
         if self.is_visible(CONFIRM_DELETE):
             self.click(CONFIRM_DELETE)
-
-
